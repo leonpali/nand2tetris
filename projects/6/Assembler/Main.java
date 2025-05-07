@@ -18,12 +18,16 @@ public class Main {
 
             String code = parser.secondParse();
 
-            String fileName = file.replace("asm", "hack");
+            String fileName = file.substring(0, 1).toUpperCase() + file.substring(1).replace("asm", "hack");
             File hackFile = new File(fileName);
             hackFile.createNewFile();
 
             FileWriter writer = new FileWriter(fileName);
             writer.write(code);
+            
+            if(code.contains("Error")) {
+                System.out.println("File contains errors");
+            }
 
             writer.close();
 

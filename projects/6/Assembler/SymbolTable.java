@@ -34,10 +34,14 @@ public class SymbolTable {
     public int addSymbol(String symbol) {
         addresses.put(symbol, counter);
         counter++;
-        return counter;
+        return counter - 1;
     }
 
     public int getAddress(String symbol) {
         return addresses.getOrDefault(symbol, -1);
+    }
+
+    public void addLabel(String label, int c) {
+        addresses.put(label, c);
     }
 }

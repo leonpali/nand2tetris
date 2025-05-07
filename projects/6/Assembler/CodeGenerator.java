@@ -5,6 +5,7 @@ public class CodeGenerator {
     private final Hashtable<String, String> computationTable = new Hashtable<>();
     private final Hashtable<String, String> destinationTable = new Hashtable<>();
     private final Hashtable<String, String> jumpTable = new Hashtable<>();
+    private final SymbolTable symbols = new SymbolTable();
 
     public CodeGenerator() {
         computationTable.put("0", "0101010");
@@ -57,23 +58,83 @@ public class CodeGenerator {
         jumpTable.put("JMP", "111");
     }
 
+    public String aInstruction(String inst) {
+        if(inst.matches("^[0-9][0-9]*$")) {
+            return numAInstruction(inst);
+        } else {
+            return symbolAInstruction(inst);
+        }
+    }
+
+    public String cInstruction(String line) {
+        if(line.contains("=")) {
+                    String[] destAndComp = line.split("=");
+                    if(destAndComp[1].contains(";")) {
+                        String[] compAndJmp = destAndComp[1].split(";");
+                        String binary = getCode(compAndJmp[0], destAndComp[0], compAndJmp[1]);
+                        if(binary.contains("Error")) {
+                            return binary + "\n";
+                        }
+                        return "111" + binary + "\n";
+                    } else {
+                        String binary = getCode(destAndComp[1], destAndComp[0], "null");
+                        if(binary.contains("Error")) {
+                            return binary + "\n";
+                        }
+                        return "111" + binary + "\n";
+                    }
+                } else {
+                    String[] compAndJmp = line.split(";");
+                    String binary = getCode(compAndJmp[0], "null", compAndJmp[1]);
+                    if(binary.contains("Error")) {
+                            return binary + "\n";
+                        }
+                    return "111" + binary + "\n";
+                }
+    }
+
+    public int addSymbol(String symbol) {
+        return symbols.addSymbol(symbol);
+    }
+
+    public void addLabel(String label, int counter) {
+        symbols.addLabel(label, counter);
+    }
+
     private String getComp(String symbol) {
-        return computationTable.getOrDefault(symbol, "Error: Unknown symbol in computation part: " + symbol);
+        return computationTable.getOrDefault(symbol, "Error: Unknown symbol in computation part: " + symbol + " ");
     }
 
     private String getDest(String symbol) {
-        return destinationTable.getOrDefault(symbol, "Error: Unknown symbol in destination part: " + symbol);
+        return destinationTable.getOrDefault(symbol, "Error: Unknown symbol in destination part: " + symbol + " ");
     }
 
     private String getJmp(String symbol) {
-        return jumpTable.getOrDefault(symbol, "Error: Unknown symbol in jump part: " + symbol);
+        return jumpTable.getOrDefault(symbol, "Error: Unknown symbol in jump part: " + symbol + " ");
     }
 
-    public String getCode(String compSym, String destSym, String jmpSym) {
+    private String getCode(String compSym, String destSym, String jmpSym) {
         String comp = getComp(compSym);
         String dest = getDest(destSym);
         String jmp = getJmp(jmpSym);
 
         return comp + dest + jmp;
+    }
+
+    private String numAInstruction(String inst) {
+        int num = Integer.parseInt(inst);
+        String binary = String.format("%15s", Integer.toBinaryString(num)).replace(" ", "0");
+        return "0" + binary + "\n";
+    }
+
+    private String symbolAInstruction(String inst) {
+        if(symbols.getAddress(inst) != -1) {
+            String binary = String.format("%15s", Integer.toBinaryString(symbols.getAddress(inst))).replace(" ", "0");
+            return "0" + binary + "\n";
+        } else {
+            int newAddress = symbols.addSymbol(inst);
+            String binary = String.format("%15s", Integer.toBinaryString(newAddress)).replace(" ", "0");
+            return "0" + binary + "\n";
+        }
     }
 }
