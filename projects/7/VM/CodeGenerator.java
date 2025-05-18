@@ -67,23 +67,17 @@ public class CodeGenerator {
 
     private void push(String segment, int index) throws IOException {
         switch (segment) {
-            // Wert in D speichern
             case "constant": 
-                writer.write("@" + index + "\n");
-                writer.write("D=A\n");
+                pushConstant(index);
                 break;
             case "pointer":
-                writer.write("@R" + String.valueOf(3 + index) + "\n");
-                writer.write("D=M\n");
+                pushPointer(index);
                 break;
             case "temp":
-                writer.write("@R" + String.valueOf(5 + index) + "\n");
-                writer.write("D=M\n");
+                pushTemp(index);
                 break;
-            // Wert als filename.index speichern
             case "static":
-                writer.write("@" + fileName.split("\\.")[0] + "." + String.valueOf(index) + "\n");
-                writer.write("D=M\n");
+                pushStatic(index);
                 break;
             default:
                 loadSegment(segment, index);
@@ -95,16 +89,16 @@ public class CodeGenerator {
     private void pop(String segment, int index) throws IOException {
         switch (segment) {
             case "constant":
-                writer.write("@" + index + "\n");
+                popConstant(index);
                 break;
             case "pointer":
-                writer.write("@R" + String.valueOf(3 + index) + "\n");
+                popPointer(index);
                 break;
             case "temp":
-                writer.write("@R" + String.valueOf(5 + index) + "\n");
+                popTemp(index);
                 break;
             case "static":
-                writer.write("@" + fileName.split("\\.")[0] + "." + String.valueOf(index) + "\n");
+                popStatic(index);
                 break;
             default:
                 loadSegment(segment, index);
@@ -217,5 +211,43 @@ public class CodeGenerator {
         writer.write("@SP\n");
         writer.write("A=M-1\n");
         writer.write("M=!M\n");
+    }
+
+    // Wert in D speichern
+    private void pushConstant(int index) throws IOException {
+        writer.write("@" + index + "\n");
+        writer.write("D=A\n");
+    }
+
+    private void pushPointer(int index) throws IOException {
+        writer.write("@R" + String.valueOf(3 + index) + "\n");
+        writer.write("D=M\n");
+    }
+
+    private void pushTemp(int index) throws IOException {
+        writer.write("@R" + String.valueOf(5 + index) + "\n");
+        writer.write("D=M\n");
+    }
+
+    // Wert als filename.index speichern
+    private void pushStatic(int index) throws IOException {
+        writer.write("@" + fileName.split("\\.")[0] + "." + String.valueOf(index) + "\n");
+        writer.write("D=M\n");
+    }
+
+    private void popConstant(int index) throws IOException {
+        writer.write("@" + index + "\n");
+    } 
+
+    private void popPointer(int index) throws IOException {
+        writer.write("@R" + String.valueOf(3 + index) + "\n");
+    }
+
+    private void popTemp(int index) throws IOException {
+        writer.write("@R" + String.valueOf(5 + index) + "\n");
+    }
+
+    private void popStatic(int index) throws IOException {
+        writer.write("@" + fileName.split("\\.")[0] + "." + String.valueOf(index) + "\n");
     }
 }

@@ -12,7 +12,7 @@ public class Parser {
     public Parser(String file) throws IOException {
         File vmFile = new File(file);
         this.sc = new Scanner(vmFile);
-        this.codeGen = new CodeGenerator(vmFile.getName());
+        this.codeGen = new CodeGenerator(file);
     }
 
     public void start() throws IOException {
@@ -49,5 +49,4 @@ public class Parser {
     private boolean hasMoreCommands() {
         return codeAfterFirstParse.size() > 0;
     }
-
 }
