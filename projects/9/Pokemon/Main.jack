@@ -1,0 +1,24 @@
+class Main {
+    function void main() {
+        var boolean running;
+		var Battle b;
+        var char key;
+
+        let running = true;
+        do Screen.clearScreen();
+
+        do Screens.showStartScreen();
+
+        while (running) {
+            let key = Keyboard.keyPressed();
+            if (key = 83) { // S für Start
+                do b.startBattle();
+            }
+            if (key = 81) { // Q für Quit
+                let running = false;
+            }
+        }
+
+        return;
+    }
+}

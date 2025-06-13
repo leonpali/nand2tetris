@@ -1,0 +1,315 @@
+function Pokemon.new 0
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 1
+pop this 1
+push argument 1
+pop this 0
+push argument 0
+pop this 5
+push argument 3
+pop this 4
+push constant 4
+call Array.new 1
+pop this 2
+push argument 2
+pop this 3
+push pointer 0
+return
+function Pokemon.setAttack 1
+push argument 0
+pop pointer 0
+push argument 2
+push argument 3
+push argument 4
+call Attack.new 3
+pop local 0
+push argument 1
+push this 2
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Pokemon.getHP 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Pokemon.takeDamage 4
+push argument 0
+pop pointer 0
+push constant 0
+call String.new 1
+pop local 3
+push pointer 0
+push argument 2
+push this 3
+call Pokemon.typeEquals 3
+pop local 1
+push pointer 0
+push argument 2
+push this 4
+call Pokemon.typeEquals 3
+pop local 2
+push argument 1
+pop local 0
+push local 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push constant 2
+call Math.multiply 2
+pop local 0
+push constant 21
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 39
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+pop local 3
+label IF_FALSE0
+push local 2
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 1
+push constant 2
+call Math.divide 2
+pop local 0
+push constant 27
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 39
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+pop local 3
+label IF_FALSE1
+push local 0
+push this 0
+gt
+push local 0
+or
+push this 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop this 0
+goto IF_END2
+label IF_FALSE2
+push this 0
+push local 0
+sub
+pop this 0
+label IF_END2
+push local 3
+return
+function Pokemon.printStatus 0
+push argument 0
+pop pointer 0
+push constant 4
+call String.new 1
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push this 0
+call Output.printInt 1
+pop temp 0
+push constant 3
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 47
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push this 1
+call Output.printInt 1
+pop temp 0
+push constant 0
+return
+function Pokemon.getAttack 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 2
+add
+pop pointer 1
+push that 0
+return
+function Pokemon.getWeakness 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Pokemon.getResistance 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function Pokemon.getName 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function Pokemon.typeEquals 3
+push argument 0
+pop pointer 0
+push argument 1
+call String.length 1
+push argument 2
+call String.length 1
+gt
+push argument 1
+call String.length 1
+or
+push argument 2
+call String.length 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 1
+call String.length 1
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push local 0
+call String.charAt 2
+pop local 1
+push argument 2
+push local 0
+call String.charAt 2
+pop local 2
+push local 1
+push local 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+goto IF_END1
+label IF_FALSE1
+push constant 0
+return
+label IF_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+return

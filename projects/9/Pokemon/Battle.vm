@@ -1,0 +1,1645 @@
+function Battle.startBattle 21
+push argument 0
+pop pointer 0
+call PlayerTeam.new 0
+pop local 0
+call EnemyTeam.new 0
+pop local 5
+push constant 0
+not
+pop local 7
+push local 0
+call PlayerTeam.getActive 1
+pop local 1
+push local 5
+call EnemyTeam.getActive 1
+pop local 2
+push constant 0
+pop local 3
+push constant 0
+pop local 4
+push constant 1500
+pop local 18
+push constant 3800
+pop local 19
+push constant 0
+pop local 20
+call Screen.clearScreen 0
+pop temp 0
+push constant 2
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 27
+call String.new 1
+push constant 84
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label WHILE_EXP0
+push local 7
+not
+if-goto WHILE_END0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.drawPokemon 3
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 0
+pop local 8
+push local 1
+push constant 0
+call Pokemon.getAttack 2
+pop local 13
+push local 1
+push constant 1
+call Pokemon.getAttack 2
+pop local 14
+push local 1
+push constant 2
+call Pokemon.getAttack 2
+pop local 15
+push local 1
+push constant 3
+call Pokemon.getAttack 2
+pop local 16
+push local 2
+push constant 0
+call Pokemon.getAttack 2
+pop local 17
+push pointer 0
+push local 1
+call Battle.showMenu 2
+pop temp 0
+label WHILE_EXP1
+push local 8
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 6
+push local 6
+push constant 49
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Battle.clearActionText 1
+pop temp 0
+push constant 18
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 6
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 13
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+push local 13
+call Attack.getDamage 1
+push local 13
+call Attack.getType 1
+call Pokemon.takeDamage 3
+call Output.printString 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 0
+not
+pop local 8
+label IF_FALSE0
+push local 6
+push constant 50
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Battle.clearActionText 1
+pop temp 0
+push constant 18
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 6
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 14
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+push local 14
+call Attack.getDamage 1
+push local 14
+call Attack.getType 1
+call Pokemon.takeDamage 3
+call Output.printString 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 0
+not
+pop local 8
+label IF_FALSE1
+push local 6
+push constant 51
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Battle.clearActionText 1
+pop temp 0
+push constant 18
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 6
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 15
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+push local 15
+call Attack.getDamage 1
+push local 15
+call Attack.getType 1
+call Pokemon.takeDamage 3
+call Output.printString 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 0
+not
+pop local 8
+label IF_FALSE2
+push local 6
+push constant 52
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+call Battle.clearActionText 1
+pop temp 0
+push constant 18
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 6
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 16
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+push local 16
+call Attack.getDamage 1
+push local 16
+call Attack.getType 1
+call Pokemon.takeDamage 3
+call Output.printString 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.drawPokemon 3
+pop temp 0
+push constant 0
+not
+pop local 8
+label IF_FALSE3
+push local 6
+push constant 53
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+call Battle.clearActionText 1
+pop temp 0
+push constant 0
+pop local 11
+label WHILE_EXP2
+call Keyboard.keyPressed 0
+push constant 0
+gt
+not
+if-goto WHILE_END2
+push constant 20
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP2
+label WHILE_END2
+push pointer 0
+push local 0
+call Battle.showSwapMenu 2
+pop temp 0
+label WHILE_EXP3
+push local 11
+not
+not
+if-goto WHILE_END3
+push constant 0
+pop local 11
+call Keyboard.keyPressed 0
+pop local 9
+push local 9
+push constant 49
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 0
+not
+pop local 11
+label IF_FALSE6
+label IF_FALSE5
+push local 9
+push constant 50
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 1
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+not
+pop local 11
+label IF_FALSE8
+label IF_FALSE7
+push local 9
+push constant 51
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 2
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+not
+pop local 11
+label IF_FALSE10
+label IF_FALSE9
+push local 9
+push constant 52
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 3
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push constant 0
+not
+pop local 11
+label IF_FALSE12
+label IF_FALSE11
+push local 9
+push constant 53
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 4
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push constant 0
+not
+pop local 11
+label IF_FALSE14
+label IF_FALSE13
+push local 9
+push constant 54
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 5
+pop local 10
+push local 0
+push local 10
+call PlayerTeam.getPokemon 2
+pop local 12
+push local 12
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push constant 0
+not
+pop local 11
+label IF_FALSE16
+label IF_FALSE15
+push constant 5
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP3
+label WHILE_END3
+push local 0
+push local 3
+push local 19
+call PlayerTeam.clearPokemon 3
+pop temp 0
+push local 0
+push local 10
+push local 19
+call PlayerTeam.drawPokemon 3
+pop temp 0
+push local 10
+pop local 3
+push local 0
+push local 10
+call PlayerTeam.setActive 2
+pop temp 0
+push local 0
+call PlayerTeam.getActive 1
+pop local 1
+call Screen.clearScreen 0
+pop temp 0
+push constant 10
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 4
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 44
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+not
+pop local 8
+label IF_FALSE4
+push constant 5
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+call Pokemon.getHP 1
+push constant 0
+gt
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push pointer 0
+push constant 19
+call Battle.clearLine 2
+pop temp 0
+push constant 19
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 2
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 6
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 17
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push constant 1
+call String.new 1
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+push local 17
+call Attack.getDamage 1
+push local 17
+call Attack.getType 1
+call Pokemon.takeDamage 3
+call Output.printString 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.drawPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.clearPokemon 3
+pop temp 0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 3
+push local 19
+call PlayerTeam.drawPokemon 3
+pop temp 0
+label IF_FALSE17
+push local 2
+call Pokemon.getHP 1
+push constant 1
+lt
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push local 4
+push constant 5
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push pointer 0
+push constant 15
+call Battle.clearLine 2
+pop temp 0
+push constant 15
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 0
+pop local 7
+goto IF_END19
+label IF_FALSE19
+push pointer 0
+push constant 19
+call Battle.clearLine 2
+pop temp 0
+push constant 19
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 2
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 14
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 5
+push local 4
+push local 18
+call EnemyTeam.clearPokemon 3
+pop temp 0
+push local 4
+push constant 1
+add
+pop local 4
+push local 5
+push local 4
+call EnemyTeam.setActive 2
+pop temp 0
+push local 5
+call EnemyTeam.getActive 1
+pop local 2
+label IF_END19
+label IF_FALSE18
+push local 1
+call Pokemon.getHP 1
+push constant 1
+lt
+push local 7
+and
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push local 0
+push local 3
+push local 19
+call PlayerTeam.clearPokemon 3
+pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
+push local 0
+push local 3
+call PlayerTeam.setActive 2
+pop temp 0
+push pointer 0
+call Battle.clearMenu 1
+pop temp 0
+push local 0
+call PlayerTeam.getActive 1
+pop local 1
+push local 20
+push constant 1
+add
+pop local 20
+label IF_FALSE20
+push local 20
+push constant 6
+eq
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push constant 0
+pop local 7
+label IF_FALSE21
+push pointer 0
+push constant 13
+call Battle.clearLine 2
+pop temp 0
+push constant 13
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push pointer 0
+push constant 2
+call Battle.clearLine 2
+pop temp 0
+push constant 2
+push constant 45
+call Output.moveCursor 2
+pop temp 0
+push local 2
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 20
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 2
+call Pokemon.getHP 1
+push constant 1
+lt
+push local 4
+and
+push constant 5
+eq
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+call Screens.showVictoryScreen 0
+pop temp 0
+goto IF_END22
+label IF_FALSE22
+call Screens.showDefeatScreen 0
+pop temp 0
+label IF_END22
+push constant 0
+return
+function Battle.showMenu 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push local 0
+call Pokemon.getAttack 2
+pop local 1
+push local 0
+push constant 4
+add
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 0
+push constant 1
+add
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+call Attack.getName 1
+call Output.printString 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 8
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 5
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 4
+call String.new 1
+push constant 83
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+function Battle.clearActionText 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 18
+call Battle.clearLine 2
+pop temp 0
+push pointer 0
+push constant 19
+call Battle.clearLine 2
+pop temp 0
+push constant 0
+return
+function Battle.clearLine 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 66
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+function Battle.clearMenu 1
+push argument 0
+pop pointer 0
+push constant 4
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push local 0
+call Battle.clearLine 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Battle.showSwapMenu 6
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+call PlayerTeam.getPokemon 2
+pop local 0
+push argument 1
+push constant 1
+call PlayerTeam.getPokemon 2
+pop local 1
+push argument 1
+push constant 2
+call PlayerTeam.getPokemon 2
+pop local 2
+push argument 1
+push constant 3
+call PlayerTeam.getPokemon 2
+pop local 3
+push argument 1
+push constant 4
+call PlayerTeam.getPokemon 2
+pop local 4
+push argument 1
+push constant 5
+call PlayerTeam.getPokemon 2
+pop local 5
+call Screen.clearScreen 0
+pop temp 0
+push constant 4
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 1
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 0
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 0
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 5
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 2
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 1
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 6
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 3
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 2
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 7
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 4
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 3
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 3
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 8
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 5
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 4
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 4
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 9
+push constant 5
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 91
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 6
+call Output.printInt 1
+pop temp 0
+push constant 2
+call String.new 1
+push constant 93
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 5
+call Pokemon.getName 1
+call Output.printString 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 5
+call Pokemon.getHP 1
+call Output.printInt 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,402 @@
+class Battle {
+    method void startBattle() {
+        var PlayerTeam player;
+        var Pokemon playerActive, enemyActive;
+        var int playerIndex, enemyIndex;
+        var EnemyTeam enemy;
+        var char key;
+        var boolean fighting, playerActed;
+        var char swapKey;
+        var int newIndex;
+        var boolean swapped;
+        var Pokemon chosen;
+        var Attack attack0, attack1, attack2, attack3, enemyAttack;
+        var int enemyDrawing, playerDrawing;
+        var int defeatedPokemon;
+
+        let player = PlayerTeam.new();
+        let enemy = EnemyTeam.new();
+        let fighting = true;
+        let playerActive = player.getActive();
+        let enemyActive = enemy.getActive();
+        let playerIndex = 0;
+        let enemyIndex = 0;
+        let enemyDrawing = 1500;
+        let playerDrawing = 3800;
+        let defeatedPokemon = 0;
+
+        do Screen.clearScreen();
+        do Output.moveCursor(2, 5);
+        do Output.printString("Trainer Red challenges you!");
+
+        while (fighting) {
+            do player.drawPokemon(playerIndex, playerDrawing);
+            do enemy.drawPokemon(enemyIndex, enemyDrawing);
+            let playerActed = false;
+            let attack0 = playerActive.getAttack(0);
+            let attack1 = playerActive.getAttack(1);
+            let attack2 = playerActive.getAttack(2);
+            let attack3 = playerActive.getAttack(3);
+            let enemyAttack = enemyActive.getAttack(0);
+
+            do showMenu(playerActive);
+
+            while (~playerActed) {
+                let key = Keyboard.keyPressed();
+
+                if (key = 49) { // 1
+                    do clearActionText();
+                    do Output.moveCursor(18, 5);
+                    do Output.printString(playerActive.getName());
+                    do Output.printString(" uses ");
+                    do Output.printString(attack0.getName());
+                    do Output.printString("!");
+                    do Output.printString(enemyActive.takeDamage(attack0.getDamage(), attack0.getType()));
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    let playerActed = true;
+                }
+
+                if (key = 50) { // 2
+                    do clearActionText();
+                    do Output.moveCursor(18, 5);
+                    do Output.printString(playerActive.getName());
+                    do Output.printString(" uses ");
+                    do Output.printString(attack1.getName());
+                    do Output.printString("!");
+                    do Output.printString(enemyActive.takeDamage(attack1.getDamage(), attack1.getType()));
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    let playerActed = true;
+                }
+
+                if (key = 51) { // 3
+                    do clearActionText();
+                    do Output.moveCursor(18, 5);
+                    do Output.printString(playerActive.getName());
+                    do Output.printString(" uses ");
+                    do Output.printString(attack2.getName());
+                    do Output.printString("!");
+                    do Output.printString(enemyActive.takeDamage(attack2.getDamage(), attack2.getType()));
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    let playerActed = true;
+                }
+
+                if (key = 52) { // 4
+                    do clearActionText();
+                    do Output.moveCursor(18, 5);
+                    do Output.printString(playerActive.getName());
+                    do Output.printString(" uses ");
+                    do Output.printString(attack3.getName());
+                    do Output.printString("!");
+                    do Output.printString(enemyActive.takeDamage(attack3.getDamage(), attack3.getType()));
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+                    do Sys.wait(5);
+                    do enemy.drawPokemon(enemyIndex, enemyDrawing);
+                    let playerActed = true;
+                }
+
+                if (key = 53) { // 5
+                    do clearActionText();
+
+                    let swapped = false;
+
+                    while (Keyboard.keyPressed() > 0) {
+                        do Sys.wait(20);
+                    }
+
+                    do showSwapMenu(player);
+
+                    while (~swapped) {
+                        let swapped = false;
+                        let swapKey = Keyboard.keyPressed();
+
+                        if(swapKey = 49) {
+                            let newIndex = 0;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        if(swapKey = 50) {
+                            let newIndex = 1;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        if(swapKey = 51) {
+                            let newIndex = 2;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        if(swapKey = 52) {
+                            let newIndex = 3;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        if(swapKey = 53) {
+                            let newIndex = 4;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        if(swapKey = 54) {
+                            let newIndex = 5;
+                            let chosen = player.getPokemon(newIndex);
+                            if (chosen.getHP() > 0) {
+                                let swapped = true;
+                            }
+                        }
+                        do Sys.wait(5);
+                    }
+
+                    do player.clearPokemon(playerIndex, playerDrawing);
+                    do player.drawPokemon(newIndex, playerDrawing);
+                    let playerIndex = newIndex;
+                    do player.setActive(newIndex);
+                    let playerActive = player.getActive();
+                    do Screen.clearScreen();
+                    do Output.moveCursor(10, 5);
+                    do Output.printString("Go, ");
+                    do Output.printString(playerActive.getName());
+                    do Output.printString("!");
+
+                    let playerActed = true;
+                }
+
+                do Sys.wait(5);
+            }
+
+            // Gegner greift an
+            if (enemyActive.getHP() > 0) {
+                do clearLine(19);
+                do Output.moveCursor(19, 5);
+                do Output.printString(enemyActive.getName());
+                do Output.printString(" uses ");
+                do Output.printString(enemyAttack.getName());
+                do Output.printString("!");
+                do Output.printString(playerActive.takeDamage(enemyAttack.getDamage(), enemyAttack.getType()));
+                do player.clearPokemon(playerIndex, playerDrawing);
+                do Sys.wait(5);
+                do player.drawPokemon(playerIndex, playerDrawing);
+                do Sys.wait(5);
+                do player.clearPokemon(playerIndex, playerDrawing);
+                do Sys.wait(5);
+                do player.drawPokemon(playerIndex, playerDrawing);
+                do Sys.wait(5);
+                do player.clearPokemon(playerIndex, playerDrawing);
+                do Sys.wait(5);
+                do player.drawPokemon(playerIndex, playerDrawing);
+            }
+
+            // Gegner besiegt?
+            if (enemyActive.getHP() < 1) {
+                if (enemyIndex = 5) {
+                    do clearLine(15);
+                    do Output.moveCursor(15, 5);
+                    let fighting = false;
+                } else {
+                    do clearLine(19);
+                    do Output.moveCursor(19, 5);
+                    do Output.printString(enemyActive.getName());
+                    do Output.printString(" was defeated!");
+                    do enemy.clearPokemon(enemyIndex, enemyDrawing);
+
+                    let enemyIndex = enemyIndex + 1;
+                    do enemy.setActive(enemyIndex);
+                    let enemyActive = enemy.getActive();
+                }
+            }
+
+            // Spieler besiegt?
+            if (playerActive.getHP() < 1 & fighting) {
+                do player.clearPokemon(playerIndex, playerDrawing);
+                let playerIndex = playerIndex + 1;
+                do player.setActive(playerIndex);
+                do clearMenu();
+                let playerActive = player.getActive();
+                let defeatedPokemon = defeatedPokemon + 1;
+            } 
+            if (defeatedPokemon = 6) {
+                let fighting = false;
+            }
+
+            // HP-Anzeige aktualisieren 
+            do clearLine(13);
+            do Output.moveCursor(13, 5);
+            do Output.printString(playerActive.getName());
+            do Output.printString(" HP: ");
+            do Output.printInt(playerActive.getHP());
+
+            do clearLine(2);
+            do Output.moveCursor(2, 45);
+            do Output.printString(enemyActive.getName());
+            do Output.printString(" HP: ");
+            do Output.printInt(enemyActive.getHP());
+
+            do Sys.wait(20);
+        }
+        
+        if (enemyActive.getHP() < 1 & enemyIndex = 5) {
+            do Screens.showVictoryScreen();
+        } else {
+            do Screens.showDefeatScreen();
+        }
+
+        return;
+    }
+
+    method void showMenu(Pokemon active) {
+        var int i;
+        var Attack a;
+        let i = 0;
+        while (i < 4) {
+            let a = active.getAttack(i);
+            do Output.moveCursor(i + 4, 5); 
+            do Output.printString("[");
+            do Output.printInt(i + 1);
+            do Output.printString("] ");
+            do Output.printString(a.getName());
+            let i = i + 1;
+        }
+        do Output.moveCursor(8, 5);
+        do Output.printString("[");
+        do Output.printInt(5);
+        do Output.printString("] ");
+        do Output.printString("Swap");
+        return;
+    }
+
+    method void clearActionText() {
+        do clearLine(18);
+        do clearLine(19);
+        return;
+    }
+
+    method void clearLine(int line) {
+        do Output.moveCursor(line, 5);
+        do Output.printString("                                                                  ");
+        return;
+    }
+
+    method void clearMenu() {
+        var int i;
+        let i = 4;
+        while (i < 8) {
+            do clearLine(i);
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void showSwapMenu(PlayerTeam player) {
+        var Pokemon p0;
+        var Pokemon p1;
+        var Pokemon p2;
+        var Pokemon p3;
+        var Pokemon p4;
+        var Pokemon p5;
+
+        let p0 = player.getPokemon(0);
+        let p1 = player.getPokemon(1);
+        let p2 = player.getPokemon(2);
+        let p3 = player.getPokemon(3);
+        let p4 = player.getPokemon(4);
+        let p5 = player.getPokemon(5);
+
+        do Screen.clearScreen();
+
+        do Output.moveCursor(4, 5);
+        do Output.printString("[");
+        do Output.printInt(1);
+        do Output.printString("] ");
+        do Output.printString(p0.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p0.getHP());
+
+        do Output.moveCursor(5, 5);
+        do Output.printString("[");
+        do Output.printInt(2);
+        do Output.printString("] ");
+        do Output.printString(p1.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p1.getHP());
+
+        do Output.moveCursor(6, 5);
+        do Output.printString("[");
+        do Output.printInt(3);
+        do Output.printString("] ");
+        do Output.printString(p2.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p2.getHP());
+
+        do Output.moveCursor(7, 5);
+        do Output.printString("[");
+        do Output.printInt(4);
+        do Output.printString("] ");
+        do Output.printString(p3.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p3.getHP());
+        
+        do Output.moveCursor(8, 5);
+        do Output.printString("[");
+        do Output.printInt(5);
+        do Output.printString("] ");
+        do Output.printString(p4.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p4.getHP());
+
+        do Output.moveCursor(9, 5);
+        do Output.printString("[");
+        do Output.printInt(6);
+        do Output.printString("] ");
+        do Output.printString(p5.getName());
+        do Output.printString(" HP: ");
+        do Output.printInt(p5.getHP());
+
+
+        return;
+    }
+}

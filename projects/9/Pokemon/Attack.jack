@@ -1,0 +1,24 @@
+class Attack {
+    field String name;
+    field int damage;
+    field String type;
+
+    constructor Attack new(String attackName, int dmg, String attackType) {
+        let name = attackName;
+        let damage = dmg;
+        let type = attackType;
+        return this;
+    }
+
+    method String getName() {
+        return name;
+    }
+
+    method int getDamage() {
+        return damage;
+    }
+
+    method String getType() {
+        return type;
+    }
+}

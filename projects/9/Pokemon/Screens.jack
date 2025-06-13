@@ -1,0 +1,29 @@
+class Screens {
+    function void showStartScreen() {
+        do Screen.clearScreen();
+        do Output.moveCursor(5, 10);
+        do Output.printString("Pokemon Jack Version");
+
+        do Output.moveCursor(7, 10);
+        do Output.printString("Press S to Start");
+
+        do Output.moveCursor(8, 10);
+        do Output.printString("Press Q to Quit");
+
+        return;
+    }
+
+    function void showVictoryScreen() {
+        do Screen.clearScreen();
+        do Output.moveCursor(5, 10);
+        do Output.printString("You defeated Red!");
+        return;
+    }
+
+    function void showDefeatScreen() {
+        do Screen.clearScreen();
+        do Output.moveCursor(5, 10);
+        do Output.printString("You were defeated...");
+        return;
+    }
+}

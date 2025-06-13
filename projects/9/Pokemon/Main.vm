@@ -1,0 +1,37 @@
+function Main.main 3
+push constant 0
+not
+pop local 0
+call Screen.clearScreen 0
+pop temp 0
+call Screens.showStartScreen 0
+pop temp 0
+label WHILE_EXP0
+push local 0
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 2
+push local 2
+push constant 83
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+call Battle.startBattle 1
+pop temp 0
+label IF_FALSE0
+push local 2
+push constant 81
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop local 0
+label IF_FALSE1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

@@ -1,0 +1,104 @@
+class Pokemon {
+    field int hp;
+    field int maxHP;
+    field Array attacks;
+    field String weakness;
+    field String resistance;
+    field String name;
+    
+    constructor Pokemon new(String pokeName, int startHP, String weak, String res) {
+        let maxHP = startHP;
+        let hp = startHP;
+        let name = pokeName;
+        let resistance = res;
+
+        let attacks = Array.new(4);
+        let weakness = weak;
+
+        return this;
+    }
+
+    method void setAttack(int index, String name, int dmg, String type) {
+        var Attack a;
+        let a = Attack.new(name, dmg, type); 
+        let attacks[index] = a;
+        return;
+    }
+
+    method int getHP() {
+        return hp;
+    }
+
+    method String takeDamage(int amount, String type) {
+        var int damageAmount;
+        var boolean isWeak;
+        var boolean isRes;
+        var String answer;
+        let answer = "";
+        let isWeak = typeEquals(type, weakness);
+        let isRes = typeEquals(type, resistance);
+
+        let damageAmount = amount;
+        if (isWeak) {
+            let damageAmount = Math.multiply(amount, 2);
+            let answer = " It's very effective!";
+        }
+        if (isRes) {
+            let damageAmount = Math.divide(amount, 2);
+            let answer = " It's not very effective...";
+        }
+        if (damageAmount > hp | damageAmount = hp) {
+            let hp = 0;
+        } else {
+            let hp = hp - damageAmount;
+        }
+        return answer;
+    }
+
+    method void printStatus() {
+        do Output.printString("HP: ");
+        do Output.printInt(hp);
+        do Output.printString(" / ");
+        do Output.printInt(maxHP);
+        return;
+    }
+
+    method int getAttack(int index) {
+        return attacks[index];
+    }
+
+    method String getWeakness() {
+        return weakness;
+    }
+
+    method String getResistance() {
+        return resistance;
+    }
+
+    method String getName() {
+        return name;
+    }
+
+    method boolean typeEquals(String a, String b) {
+        var int i;
+        var char ca, cb;
+
+        if (a.length() > b.length() | a.length() < b.length()) {
+            return false;
+        }
+
+        let i = 0;
+        while (i < a.length()) {
+            let ca = a.charAt(i);
+            let cb = b.charAt(i);
+            if (ca = cb) {
+                
+            } else {
+                return false;
+            }
+            let i = i + 1;
+        }
+
+        return true;
+    }
+}
