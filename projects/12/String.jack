@@ -10,54 +10,131 @@
  * string-oriented operations.
  */
 class String {
+    field int length;
+    field Array s;
 
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
     constructor String new(int maxLength) {
+        var int l;
+        let l = maxLength;
+
+        if (l < 1) {
+            let l = 1;
+        }
+
+        let s = Array.new(l);
+        let length = 0;
+     
+        return this;
     }
 
     /** Disposes this string. */
     method void dispose() {
+        do s.dispose();
+        return;
     }
 
     /** Returns the current length of this string. */
     method int length() {
+        return length;
     }
 
     /** Returns the character at the j-th location of this string. */
     method char charAt(int j) {
+        return s[j];
     }
 
     /** Sets the character at the j-th location of this string to c. */
     method void setCharAt(int j, char c) {
+        let s[j] = c;
+        return;
     }
 
     /** Appends c to this string's end and returns this string. */
     method String appendChar(char c) {
+        let s[length] = c;
+        let length = length + 1;
+        return this;
     }
 
     /** Erases the last character from this string. */
     method void eraseLastChar() {
+        let length = length - 1;
+        let s[length] = 0;
+        return;
     }
 
     /** Returns the integer value of this string, 
      *  until a non-digit character is detected. */
     method int intValue() {
+        var int value, i;
+        var boolean isNegative;
+        if(s[0] = 45) {
+            let isNegative = true;
+            let i = i + 1;
+        }
+
+        while (i < length) {
+            let value = (s[i] - 48 + (value * 10));
+            let i = i + 1;
+        }
+
+        if (isNegative) {
+            let value = 0 - value;
+        }
+        
+        return value;
     }
 
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
+        var int num;
+
+        let length = 0;
+        if (val = 0) {
+            do appendChar(48);
+            return;
+        }
+
+        if (val < 0) {
+            do appendChar(45);
+        }
+
+        let num = Math.abs(val);
+        do setIntHelper(num);
+
+        return;
+    }
+
+    method void setIntHelper(int num) {
+        var int tenth, digit;
+
+        let tenth = num / 10;
+        let digit = num - (tenth * 10);
+
+        if (num < 10) {
+            do appendChar(num + 48);
+        } else {
+            do setIntHelper(tenth);
+            do appendChar(digit + 48);
+        }
+
+        return;
     }
 
     /** Returns the new line character. */
     function char newLine() {
+        return 128;
     }
 
     /** Returns the backspace character. */
     function char backSpace() {
+        return 129;
     }
 
     /** Returns the double quote (") character. */
     function char doubleQuote() {
+        return 34;
     }
 }

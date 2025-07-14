@@ -1,0 +1,73 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+    static Array free;
+    static int heap, length, next;
+
+    /** Initializes the class. */
+    function void init() {
+        let heap = 2048;
+        let length = 0;
+        let next = 1;
+        let free = heap;
+        let free[length] = 14335;
+        let free[next] = null;
+        return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+        var Array block;
+        let block = address;
+        return block[0];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+        var Array block;
+        let block = address;
+        let block[0] = value;
+        return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+        var Array block, prev, nextB;
+        let block = free;
+        let prev = 0;
+        while (block[length] < size) {
+            let prev = block;
+            let block = block[next];
+        }
+        let nextB = block + 2 + size;
+        let nextB[length] = block[length] - size - 2;
+        let nextB[next] = block[next];
+        let block[length] = size;
+        let block[next] = null;
+
+        if (prev = 0) {
+            let free = nextB;
+        } else {
+            let prev[next] = nextB;
+        }
+        return block + 2;
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+        var Array block;
+        let block = o - 2;
+        let block[next] = free;
+        let free = block;
+        return;
+    }    
+}
